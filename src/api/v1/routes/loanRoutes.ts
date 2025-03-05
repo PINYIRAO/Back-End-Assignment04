@@ -1,0 +1,149 @@
+import { Router } from "express";
+import * as loanController from "../controllers/loanController";
+
+// define a router for deal with
+const router: Router = Router();
+
+/**
+ * @route GET /
+ * @description Get all loans.
+ */
+/**
+ * @openapi
+ * /api/v1/loans:
+ *   get:
+ *     summary: Get all loans
+ *     tags: [Loan]
+ *     responses:
+ *         200:
+ *           description: All loans
+ *         500:
+ *           description: Server error
+ */
+router.get("/", loanController.getAllLoans);
+
+/**
+ * @route GET /:id
+ * @description Get an existing loan.
+ */
+/**
+ * @openapi
+ * /api/v1/loans/{id}:
+ *   get:
+ *     summary: Get an existing loan
+ *     tags: [Loan]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: number
+ *         required: true
+ *         description: ID of the loan to be found
+ *     responses:
+ *       200:
+ *         description: The wanted loan
+ *       404:
+ *         description: No loan found with the specified id
+ *       500:
+ *         description: Server error
+ */
+router.get("/:id", loanController.getLoanById);
+
+/**
+ * @route POST /
+ * @description Create a new loan
+ */
+/**
+ * @openapi
+ * /api/v1/loans:
+ *  post:
+ *   summary: Create a new loan
+ *   tags: [Loan]
+ *   requestBody:
+ *     content:
+ *       application/json:
+ *         schema:
+ *           type: object
+ *           properties:
+ *             amount:
+ *               type: number
+ *             term:
+ *               type: number
+ *             client:
+ *               type: string
+ *   responses:
+ *    201:
+ *     description: the new loan
+ *    500:
+ *     description: Server error
+ */
+router.post("/", loanController.createLoan);
+
+/**
+ * @route PUT /:id/review
+ * @description Update an existing loan.
+ *
+ * @openapi
+ * /api/v1/loans/{id}/review:
+ *   put:
+ *     summary: Update an existing loan
+ *     tags: [Loan]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the loan to update
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               amount:
+ *                 type: number
+ *               term:
+ *                 type: number
+ *     responses:
+ *       200:
+ *         description: The the loan has been updated.
+ *       404:
+ *         description: No loan found with the specified id
+ *       500:
+ *         description: Server error
+ */
+router.put("/:id/review", loanController.reviewLoan);
+
+/**
+ * @route PUT /:id/approve
+ * @description approve an existing loan.
+ *
+ * @openapi
+ * /api/v1/loans/{id}/reivew:
+ *   put:
+ *     summary: Approve an existing loan
+ *     tags: [Loan]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the loan to approve
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               status: string
+ *     responses:
+ *       200:
+ *         description: The decision on the loan has been made.
+ *       404:
+ *         description: No loan found with the specified id
+ *       500:
+ *         description: Server error
+ */
+router.put("/:id/approve", loanController.approveLoan);

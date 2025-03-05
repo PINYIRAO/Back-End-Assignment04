@@ -74,16 +74,23 @@ export const createLoan = async (
 };
 
 /**
- * @description Update an existing loan.
- * @route PUT /:id
+ * @description review an existing loan.
+ * @route PUT /:id/review
  * @returns {Promise<void>}
  */
-export const updateLoan = async (
+export const reviewLoan = async (
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
   try {
+    // protect status field
+    const newLoan: Partial<Loan> = { ...req.body };
+    delete newLoan.client;
+    delete newLoan.requestDate;
+    // set default value for new loan status
+    newLoan.status = "In Review Process";
+
     // call the loanService by passing the id from thge url path and the body of the request
     const updatedLoan: Loan = await loanService.updateLoan(
       req.params.id,
@@ -92,7 +99,41 @@ export const updateLoan = async (
 
     res
       .status(HTTP_STATUS.OK)
-      .json(successResponse(updatedLoan, "Loan Updated"));
+      .json(successResponse(updatedLoan, "Loan has been reviewed"));
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * @description approve an existing loan.
+ * @route PUT /:id/approve
+ * @returns {Promise<void>}
+ */
+export const approveLoan = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    // protect status field
+    const newLoan: Partial<Loan> = { ...req.body };
+    delete newLoan.client;
+    delete newLoan.requestDate;
+    delete newLoan.amount;
+    delete newLoan.term;
+
+    // call the loanService by passing the id from thge url path and the body of the request
+    const updatedLoan: Loan = await loanService.updateLoan(
+      req.params.id,
+      req.body
+    );
+
+    res
+      .status(HTTP_STATUS.OK)
+      .json(
+        successResponse(updatedLoan, "The decision on the loan has been made")
+      );
   } catch (error) {
     next(error);
   }

@@ -69,6 +69,14 @@ export const getLoanById = async (id: string): Promise<Loan> => {
  */
 export const createLoan = async (loan: Partial<Loan>): Promise<Loan> => {
   try {
+    // protect status field
+    const newLoan: Partial<Loan> = { ...loan };
+    delete newLoan.status;
+    delete newLoan.requestDate;
+    // set default value for new loan request date
+    newLoan.requestDate = new Date();
+    newLoan.status = "Request";
+
     const id: string = await firestoreRepository.createDocument(
       COLLECTION,
       loan
