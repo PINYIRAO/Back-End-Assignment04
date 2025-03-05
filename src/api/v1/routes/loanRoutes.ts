@@ -1,5 +1,7 @@
 import { Router } from "express";
 import * as loanController from "../controllers/loanController";
+import authenticate from "../middleware/authenticate";
+import isAuthorized from "../middleware/authorize";
 
 // define a router for deal with
 const router: Router = Router();
@@ -20,7 +22,12 @@ const router: Router = Router();
  *         500:
  *           description: Server error
  */
-router.get("/", loanController.getAllLoans);
+router.get(
+  "/",
+  authenticate,
+  isAuthorized({ hasRole: ["officer", "manager"] }),
+  loanController.getAllLoans
+);
 
 /**
  * @route GET /:id
@@ -47,7 +54,12 @@ router.get("/", loanController.getAllLoans);
  *       500:
  *         description: Server error
  */
-router.get("/:id", loanController.getLoanById);
+router.get(
+  "/:id",
+  authenticate,
+  isAuthorized({ hasRole: ["officer", "manager"] }),
+  loanController.getLoanById
+);
 
 /**
  * @route POST /
@@ -77,7 +89,12 @@ router.get("/:id", loanController.getLoanById);
  *    500:
  *     description: Server error
  */
-router.post("/", loanController.createLoan);
+router.post(
+  "/",
+  authenticate,
+  isAuthorized({ hasRole: ["user"] }),
+  loanController.createLoan
+);
 
 /**
  * @route PUT /:id/review
@@ -113,7 +130,12 @@ router.post("/", loanController.createLoan);
  *       500:
  *         description: Server error
  */
-router.put("/:id/review", loanController.reviewLoan);
+router.put(
+  "/:id/review",
+  authenticate,
+  isAuthorized({ hasRole: ["officer"] }),
+  loanController.reviewLoan
+);
 
 /**
  * @route PUT /:id/approve
@@ -146,4 +168,9 @@ router.put("/:id/review", loanController.reviewLoan);
  *       500:
  *         description: Server error
  */
-router.put("/:id/approve", loanController.approveLoan);
+router.put(
+  "/:id/approve",
+  authenticate,
+  isAuthorized({ hasRole: ["manager"] }),
+  loanController.approveLoan
+);
