@@ -23,105 +23,76 @@ export const getAllLoans = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    const { department, branchId }: EmployeeQueryParams = req.query;
-    const employees: Employee[] = await employeeService.getAllEmployees(
-      department !== undefined ? department : undefined,
-      branchId !== undefined ? branchId : undefined
-    );
+    const loans: Loan[] = await loanService.getAllLoans();
 
-    res.status(HTTP_STATUS.OK).json(successResponse(employees));
+    res.status(HTTP_STATUS.OK).json(successResponse(loans));
   } catch (error) {
     next(error);
   }
 };
 
 /**
- * @description get an existing employee by id.
+ * @description get an existing loan by id.
  * @route get /:id
  * @returns {Promise<void>}
  */
-export const getEmployeeById = async (
+export const getLoanById = async (
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
   try {
-    // call the employeeService by passing the id from thge url path and the body of the request
-    const employee: Employee = await employeeService.getEmployeeById(
-      req.params.id
-    );
+    // call the loanService by passing the id from thge url path and the body of the request
+    const loan: Loan = await loanService.getLoanById(req.params.id);
 
-    res
-      .status(HTTP_STATUS.OK)
-      .json(successResponse(employee, "Employee Found"));
+    res.status(HTTP_STATUS.OK).json(successResponse(loan, "Loan Found"));
   } catch (error) {
     next(error);
   }
 };
 
 /**
- * @description Create a new employee.
+ * @description Create a new loan.
  * @route POST /
  * @returns {Promise<void>}
  */
-export const createEmployee = async (
+export const createLoan = async (
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
   try {
-    // call the employeeService by passing the body of the request
-    const newEmployee: Employee = await employeeService.createEmployee(
-      req.body
-    );
+    // call the loanService by passing the body of the request
+    const newLoan: Loan = await loanService.createLoan(req.body);
 
     res
       .status(HTTP_STATUS.CREATED)
-      .json(successResponse(newEmployee, "Employee Created"));
+      .json(successResponse(newLoan, "Loan Created"));
   } catch (error) {
     next(error);
   }
 };
 
 /**
- * @description Update an existing employee.
+ * @description Update an existing loan.
  * @route PUT /:id
  * @returns {Promise<void>}
  */
-export const updateEmployee = async (
+export const updateLoan = async (
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
   try {
-    // call the employeeService by passing the id from thge url path and the body of the request
-    const updatedEmployee: Employee = await employeeService.updateEmployee(
+    // call the loanService by passing the id from thge url path and the body of the request
+    const updatedLoan: Loan = await loanService.updateLoan(
       req.params.id,
       req.body
     );
 
     res
       .status(HTTP_STATUS.OK)
-      .json(successResponse(updatedEmployee, "Employee Updated"));
-  } catch (error) {
-    next(error);
-  }
-};
-
-/**
- * @description Delete an employee.
- * @route DELETE /:id
- * @returns {Promise<void>}
- */
-export const deleteEmployee = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
-  try {
-    await employeeService.deleteEmployee(req.params.id);
-
-    res.status(HTTP_STATUS.OK).json(successResponse("Employee Deleted"));
+      .json(successResponse(updatedLoan, "Loan Updated"));
   } catch (error) {
     next(error);
   }
