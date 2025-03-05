@@ -1,6 +1,5 @@
 export interface Loan {
   id: string;
-  caseId: string;
   interest: number;
   amount: number;
   Term: number;

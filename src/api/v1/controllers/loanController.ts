@@ -7,22 +7,17 @@
  */
 
 import { Request, Response, NextFunction } from "express";
-import * as employeeService from "../services/employeeService";
-import type { Employee } from "../models/employeeModel";
+import * as loanService from "../services/loanService";
+import type { Loan } from "../models/loanModel";
 import { successResponse } from "../models/responseModel";
 import { HTTP_STATUS } from "../../../constants/httpConstants";
 
-interface EmployeeQueryParams {
-  department?: string;
-  branchId?: string;
-}
-
 /**
- * @description Get all employees.
+ * @description Get all loans.
  * @route GET /
  * @returns {Promise<void>}
  */
-export const getAllEmployees = async (
+export const getAllLoans = async (
   req: Request,
   res: Response,
   next: NextFunction
