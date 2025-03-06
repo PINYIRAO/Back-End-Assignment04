@@ -19,6 +19,10 @@ const router: Router = Router();
  *     responses:
  *         200:
  *           description: All loans
+ *         401:
+ *           description: Unauthorized user
+ *         403:
+ *           description: Insufficient privileges
  *         500:
  *           description: Server error
  */
@@ -49,6 +53,10 @@ router.get(
  *     responses:
  *       200:
  *         description: The wanted loan
+ *       401:
+ *         description: Unauthorized user
+ *       403:
+ *         description: Insufficient privileges
  *       404:
  *         description: No loan found with the specified id
  *       500:
@@ -86,6 +94,10 @@ router.get(
  *   responses:
  *    201:
  *     description: the new loan
+ *    401:
+ *     description: Unauthorized user
+ *    403:
+ *     description: Insufficient privileges
  *    500:
  *     description: Server error
  */
@@ -125,6 +137,10 @@ router.post(
  *     responses:
  *       200:
  *         description: The the loan has been updated.
+ *       401:
+ *         description: Unauthorized user
+ *       403:
+ *         description: Insufficient privileges
  *       404:
  *         description: No loan found with the specified id
  *       500:
@@ -142,7 +158,7 @@ router.put(
  * @description approve an existing loan.
  *
  * @openapi
- * /api/v1/loans/{id}/reivew:
+ * /api/v1/loans/{id}/approve:
  *   put:
  *     summary: Approve an existing loan
  *     tags: [Loan]
@@ -163,6 +179,10 @@ router.put(
  *     responses:
  *       200:
  *         description: The decision on the loan has been made.
+ *       401:
+ *         description: Unauthorized user
+ *       403:
+ *         description: Insufficient privileges
  *       404:
  *         description: No loan found with the specified id
  *       500:
