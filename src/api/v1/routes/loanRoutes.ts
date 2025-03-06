@@ -174,3 +174,5 @@ router.put(
   isAuthorized({ hasRole: ["manager"] }),
   loanController.approveLoan
 );
+
+export default router;

@@ -11,6 +11,10 @@ import healthRoutes from "./api/v1/routes/healthRoutes";
 import employeeRoutes from "./api/v1/routes/employeeRoutes";
 import branchRoutes from "./api/v1/routes/branchRoutes";
 
+import adminRoutes from "./api/v1/routes/adminRoutes";
+import userRoutes from "./api/v1/routes/userRoutes";
+import loanRoutes from "./api/v1/routes/loanRoutes";
+
 // initialize the express application
 const app: Express = express();
 
@@ -23,6 +27,10 @@ app.use(express.json());
 app.use(accessLogger);
 
 app.use("/health", healthRoutes);
+app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/admin", adminRoutes);
+app.use("/api/v1/loans", loanRoutes);
+
 app.use("/api/v1/employees", employeeRoutes);
 app.use("/api/v1/branches", branchRoutes);
 
