@@ -8,8 +8,6 @@ import setupSwagger from "../config/swagger";
 import errorHandler from "./api/v1/middleware/errorHandler";
 // import routes
 import healthRoutes from "./api/v1/routes/healthRoutes";
-import employeeRoutes from "./api/v1/routes/employeeRoutes";
-import branchRoutes from "./api/v1/routes/branchRoutes";
 
 import adminRoutes from "./api/v1/routes/adminRoutes";
 import userRoutes from "./api/v1/routes/userRoutes";
@@ -30,9 +28,6 @@ app.use("/health", healthRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/loans", loanRoutes);
-
-app.use("/api/v1/employees", employeeRoutes);
-app.use("/api/v1/branches", branchRoutes);
 
 // apply error handling middleware
 app.use(errorHandler);
