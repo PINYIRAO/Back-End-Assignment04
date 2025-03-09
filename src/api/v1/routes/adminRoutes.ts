@@ -1,5 +1,8 @@
 import express, { Router } from "express";
-import { setCustomClaims } from "../controllers/adminController";
+import {
+  setCustomClaims,
+  getTokenAndRoleBatch,
+} from "../controllers/adminController";
 import authenticate from "../middleware/authenticate";
 import isAuthorized from "../middleware/authorize";
 
@@ -8,8 +11,10 @@ const router: Router = express.Router();
 router.post(
   "/setCustomClaims",
   authenticate,
-  // isAuthorized({ hasRole: ["admin"] }),
+  isAuthorized({ hasRole: ["admin"] }),
   setCustomClaims
 );
+
+router.post("/getTokenAndRoleBatch", getTokenAndRoleBatch);
 
 export default router;

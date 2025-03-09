@@ -32,7 +32,32 @@ In the future, if I try to import a Json configuration file, I prefer to keep it
 
 
 
+## Scenario 2: could not see the idtoken object information in postman
 
+-   **Breakpoint Location:** file:adminController.ts; line: 84
+-   **Objective:** 
+Becase I need to use different users to test my application. I write a api for admin to get all the users idtokens and the current roles in one go. However, in the request response I couldn't see the detail object information in postman.
+
+### Debugger Observations
+
+-   **Variable States:** No used for this scenario.
+-   **Call Stack:** No used for this scenario.
+-   **Behavior:** 
+The object couldn't show correctly in the postman respnose body.
+
+### Analysis
+
+-   What did you learn from this scenario?
+At the first, I doubted that I got the wrong information in the fetch part, but after I debugged the code line by line, I found that actually I put the original JS object directly in a string, that was also the reason why the object couldn't not be showen right. I shouls send the object to the successresponse as the data parameter.
+
+-   Did you observe any unexpected behavior? If so, what might be the cause?
+No unexpected behaviors were observed.
+
+-   Are there areas for improvement or refactoring in this part of the code?
+No areas for improvements at this moment.
+
+-   How does this enhance your understanding of the overall project?
+In the future, when I encounter a similar error, I will first try to troubleshoot with the thought that maybe I am not handling the object-to-string transformation correctly.
 
 
 
