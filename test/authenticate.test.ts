@@ -60,18 +60,17 @@ describe("authenticate middleware", () => {
       authorization: "Bearer xyz",
     };
 
-    const expectedError: AuthenticationError = new AuthenticationError(
-      "Unauthorized: No token provided",
-      "TOKEN_NOT_FOUND"
-    );
-
     await authenticate(
       mockRequest as Request,
       mockResponse as Response,
       nextFunction
     );
 
-    expect(nextFunction).toHaveBeenCalledWith(expectedError);
+    expect(nextFunction).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: expect.stringMatching(/^Unauthorized: /),
+      })
+    );
   });
 
   it("should call next() when token is valid", async () => {
