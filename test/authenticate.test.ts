@@ -7,6 +7,7 @@ describe("authenticate middleware", () => {
   let mockRequest: Partial<Request>;
   let mockResponse: Partial<Response>;
   let nextFunction: jest.Mock;
+
   beforeEach(() => {
     mockRequest = {
       headers: {},
@@ -16,6 +17,7 @@ describe("authenticate middleware", () => {
     };
     nextFunction = jest.fn();
   });
+
   it("should call next passing authenticationError when no token is provided", async () => {
     // Assemble
     const expectedError: AuthenticationError = new AuthenticationError(
@@ -31,6 +33,7 @@ describe("authenticate middleware", () => {
 
     expect(nextFunction).toHaveBeenCalledWith(expectedError);
   });
+
   it("should call next passing authenticationError when malformed token is provided", async () => {
     // Assemble
     mockRequest.headers = {
@@ -49,5 +52,52 @@ describe("authenticate middleware", () => {
     );
 
     expect(nextFunction).toHaveBeenCalledWith(expectedError);
+  });
+
+  it("should call next passing authenticationError when malformed token is invalid", async () => {
+    // Assemble
+    mockRequest.headers = {
+      authorization: "Bearer xyz",
+    };
+
+    const expectedError: AuthenticationError = new AuthenticationError(
+      "Unauthorized: No token provided",
+      "TOKEN_NOT_FOUND"
+    );
+
+    await authenticate(
+      mockRequest as Request,
+      mockResponse as Response,
+      nextFunction
+    );
+
+    expect(nextFunction).toHaveBeenCalledWith(expectedError);
+  });
+
+  it("should call next() when token is valid", async () => {
+    // Assemble
+    mockRequest.headers = {
+      authorization: "Bearer mock-token",
+    };
+
+    // mock the google function "verifyIdToken"
+    (auth.verifyIdToken as jest.Mock).mockResolvedValueOnce({
+      uid: "mock-uid",
+      role: "user",
+    });
+
+    // Act
+    await authenticate(
+      mockRequest as Request,
+      mockResponse as Response,
+      nextFunction
+    );
+
+    expect(auth.verifyIdToken).toHaveBeenCalledWith("mock-token");
+    expect(mockResponse.locals).toEqual({
+      uid: "mock-uid",
+      role: "user",
+    });
+    expect(nextFunction).toHaveBeenCalled();
   });
 });

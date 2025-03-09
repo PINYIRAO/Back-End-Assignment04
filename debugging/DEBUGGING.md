@@ -61,24 +61,29 @@ In the future, when I encounter a similar error, I will first try to troubleshoo
 
 
 
+## Scenario 3: When I create an new loan, I couldn't get the default status in the loan information
 
-
-
-
-## Scenario 1: [Title of the Scenario]
-
--   **Breakpoint Location:** [File and line number]
--   **Objective:** [What you are investigating or trying to understand]
+-   **Breakpoint Location:** file:loanService.ts; line: 77
+-   **Objective:** 
+I have configured the function that when the user creates a new loan, the loan status will be set to the default value Request. But now I couldn't get the information through the postman.
 
 ### Debugger Observations
 
--   **Variable States:** [List key variables and their values]
--   **Call Stack:** [Summarize the function sequence leading to the breakpoint]
--   **Behavior:** [Describe what happens at this point in the program]
+-   **Variable States:** No used for this scenario.
+-   **Call Stack:** No used for this scenario.
+-   **Behavior:** 
+The data process seems having bug.
 
 ### Analysis
 
 -   What did you learn from this scenario?
+In the end, I found that I had used the wrong data object in the program. By using the debug function, I quickly located the error and fixed it. Debugging is such a useful tool for programmers; we couldn't live without it.
+
 -   Did you observe any unexpected behavior? If so, what might be the cause?
+No unexpected behaviors were observed.
+
 -   Are there areas for improvement or refactoring in this part of the code?
+No areas for improvements at this moment.
+
 -   How does this enhance your understanding of the overall project?
+I think this error should be caught in the unit test part. Through this assignment, I learned a lesson that in the future, I should do the integration test after finishing the unit test. This process could improve the efficiency and productivity of work.

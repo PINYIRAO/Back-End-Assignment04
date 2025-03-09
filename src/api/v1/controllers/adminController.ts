@@ -19,6 +19,7 @@ interface User {
 }
 
 interface TokenObjects {
+  uid: string;
   email: string;
   idToken: string;
   role: "admin" | "officer" | "manager" | "user";
@@ -108,6 +109,7 @@ export const getTokenAndRoleBatch = async (
       );
 
       tokenObjects.push({
+        uid: decodedIdToken.uid,
         email: result.email,
         idToken: result.idToken,
         role: decodedIdToken.role,

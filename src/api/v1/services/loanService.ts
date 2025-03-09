@@ -79,9 +79,9 @@ export const createLoan = async (loan: Partial<Loan>): Promise<Loan> => {
 
     const id: string = await firestoreRepository.createDocument(
       COLLECTION,
-      loan
+      newLoan
     );
-    return { id, ...loan } as Loan;
+    return { id, ...newLoan } as Loan;
   } catch (error: unknown) {
     if (error instanceof RepositoryError) {
       throw error;
