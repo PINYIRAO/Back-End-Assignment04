@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import isAuthorized from "../src/api/v1/middleware/authorize";
 import { AuthorizationError } from "../src/api/v1/errors/errors";
+import { MiddlewareFunction } from "../src/api/v1/types/expressTypes";
 
 describe("isAuthorized middleware", () => {
   let mockRequest: Partial<Request>;
@@ -24,13 +25,35 @@ describe("isAuthorized middleware", () => {
       role: "admin",
     };
 
-    const middleware = isAuthorized({ hasRole: ["admin", "manager"] });
+    const middleware: MiddlewareFunction = isAuthorized({
+      hasRole: ["admin", "manager"],
+    });
 
     // Act
     middleware(mockRequest as Request, mockResponse as Response, nextFunction);
 
     // Assert
     expect(nextFunction).toHaveBeenCalled();
+  });
+
+  it("should call next passing AuthorizationError while user's role doesn't meet the roles requirement", () => {
+    // Arrange
+    mockResponse.locals = {
+      uid: "user123",
+      role: "manager",
+    };
+    const expectedError: AuthorizationError = new AuthorizationError(
+      "Forbidden: Insufficient role",
+      "INSUFFICIENT_ROLE"
+    );
+
+    const middleware: MiddlewareFunction = isAuthorized({ hasRole: ["user"] });
+
+    // Act
+    middleware(mockRequest as Request, mockResponse as Response, nextFunction);
+
+    // Assert
+    expect(nextFunction).toHaveBeenCalledWith(expectedError);
   });
 
   it("should call next() when same user and allowSameUser is true", () => {
@@ -41,7 +64,7 @@ describe("isAuthorized middleware", () => {
       role: "user",
     };
 
-    const middleware = isAuthorized({
+    const middleware: MiddlewareFunction = isAuthorized({
       hasRole: ["admin"],
       allowSameUser: true,
     });
