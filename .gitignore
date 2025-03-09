@@ -1,3 +1,6 @@
 node_modules/
-dist/
 .vscode/
+*.log
+dist/
+
+back-end-assignment04-firebase-private-key.json
