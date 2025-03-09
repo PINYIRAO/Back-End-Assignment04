@@ -3,6 +3,13 @@ import authenticate from "../src/api/v1/middleware/authenticate";
 import { auth } from "../config/firebaseConfig";
 import { AuthenticationError } from "../src/api/v1/errors/errors";
 
+// mock the auth verifyToken
+jest.mock("../config/firebaseConfig", () => ({
+  auth: {
+    verifyIdToken: jest.fn(),
+  },
+}));
+
 describe("authenticate middleware", () => {
   let mockRequest: Partial<Request>;
   let mockResponse: Partial<Response>;
