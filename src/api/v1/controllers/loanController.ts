@@ -94,7 +94,7 @@ export const reviewLoan = async (
     // call the loanService by passing the id from thge url path and the body of the request
     const updatedLoan: Loan = await loanService.updateLoan(
       req.params.id,
-      req.body
+      newLoan
     );
 
     res
@@ -122,11 +122,13 @@ export const approveLoan = async (
     delete newLoan.requestDate;
     delete newLoan.amount;
     delete newLoan.term;
+    // set to approved temporarily
+    newLoan.status = "Approved";
 
     // call the loanService by passing the id from thge url path and the body of the request
     const updatedLoan: Loan = await loanService.updateLoan(
       req.params.id,
-      req.body
+      newLoan
     );
 
     res

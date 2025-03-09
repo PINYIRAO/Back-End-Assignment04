@@ -1,0 +1,1493 @@
+{
+  "info": {
+    "_postman_id": "1ac2d762-b212-4ffb-8157-a1b71208c9fa",
+    "name": "Back-End-assignment04",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39461971"
+  },
+  "item": [
+    {
+      "name": "administration",
+      "item": [
+        {
+          "name": "getToken",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Parse the JSON response\r",
+                  "var jsonData = pm.response.json();\r",
+                  "\r",
+                  "// Set the environment variable\r",
+                  "pm.environment.set(\"back-end-token\", jsonData.idToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{   \r\n  \"email\": \"admin1@rrc.ca\",\r\n  \"password\": \"123456\",\r\n  \"returnSecureToken\": true\r\n} ",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA_tCJcoArqjtLG6oBi81s37P26Mu05-DU",
+              "protocol": "https",
+              "host": ["identitytoolkit", "googleapis", "com"],
+              "path": ["v1", "accounts:signInWithPassword"],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "AIzaSyA_tCJcoArqjtLG6oBi81s37P26Mu05-DU"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getTokenAndRoleBatch",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Parse the JSON response\r",
+                  "var jsonData = pm.response.json();\r",
+                  "\r",
+                  "// Set the environment variable\r",
+                  "pm.environment.set(\"back-end-token\", jsonData.idToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[{   \r\n  \"email\": \"admin1@rrc.ca\",\r\n  \"password\": \"123456\",\r\n  \"returnSecureToken\": true\r\n} ,{   \r\n  \"email\": \"manager1@rrc.ca\",\r\n  \"password\": \"123456\",\r\n  \"returnSecureToken\": true\r\n} ,{   \r\n  \"email\": \"officer1@rrc.ca\",\r\n  \"password\": \"123456\",\r\n  \"returnSecureToken\": true\r\n} ,{   \r\n  \"email\": \"user1@rrc.ca\",\r\n  \"password\": \"123456\",\r\n  \"returnSecureToken\": true\r\n} ]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/admin/getTokenAndRoleBatch",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "admin", "getTokenAndRoleBatch"],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "AIzaSyA_tCJcoArqjtLG6oBi81s37P26Mu05-DU",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getTokenAndRoleBatch",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[{   \r\n  \"email\": \"admin1@rrc.ca\",\r\n  \"password\": \"123456\",\r\n  \"returnSecureToken\": true\r\n} ,{   \r\n  \"email\": \"manager1@rrc.ca\",\r\n  \"password\": \"123456\",\r\n  \"returnSecureToken\": true\r\n} ,{   \r\n  \"email\": \"officer1@rrc.ca\",\r\n  \"password\": \"123456\",\r\n  \"returnSecureToken\": true\r\n} ,{   \r\n  \"email\": \"user1@rrc.ca\",\r\n  \"password\": \"123456\",\r\n  \"returnSecureToken\": true\r\n} ]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/admin/getTokenAndRoleBatch",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "admin", "getTokenAndRoleBatch"],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "AIzaSyA_tCJcoArqjtLG6oBi81s37P26Mu05-DU",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "3991"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"f97-S1pkW2n2byDJJUXBjCe3yNFYVdA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 00:24:00 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"email\": \"admin1@rrc.ca\",\n            \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoiYWRtaW4iLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYmFjay1lbmQtYXNzaWdubWVudDA0IiwiYXVkIjoiYmFjay1lbmQtYXNzaWdubWVudDA0IiwiYXV0aF90aW1lIjoxNzQxNDc5ODQwLCJ1c2VyX2lkIjoiYlhjaGMwUXdMU2hqWTlmcXQxejg5bU55ckZpMiIsInN1YiI6ImJYY2hjMFF3TFNoalk5ZnF0MXo4OW1OeXJGaTIiLCJpYXQiOjE3NDE0Nzk4NDAsImV4cCI6MTc0MTQ4MzQ0MCwiZW1haWwiOiJhZG1pbjFAcnJjLmNhIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFkbWluMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.immGrU2-owFMjdNdiqet_BHUyy-cuGQh3iU-wW_MyRvbf71Xo3seHFil4KVXNMm_Jb7njUmoNc7mU_U-zMcGpwyu8Ys1-hhX4y1wakHJIok9EaHZVDnAZGfiHPGu4D8NBnO_9L34mdGPfYjhYDL2CD6FV4iDtWfYGZq7zfJRF8_TdQRU2jSXu3zv7gb2Z4xZXXed436Rt9oHdOwLEVaUZJaG8On4umWIY-MzbnOipbnAMn5ddUFbNUGwpdRg7aqqMUqOzXppiG8kFr5iVbuJOh09m_gyX37mBf4PrOTQtAP0iVCFElrkjbEJr4k9MkLDmogeAb7FB_gMtM168ZZBqg\",\n            \"role\": \"admin\"\n        },\n        {\n            \"email\": \"manager1@rrc.ca\",\n            \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYmFjay1lbmQtYXNzaWdubWVudDA0IiwiYXVkIjoiYmFjay1lbmQtYXNzaWdubWVudDA0IiwiYXV0aF90aW1lIjoxNzQxNDc5ODQxLCJ1c2VyX2lkIjoibjhFbmZNdkpsZ2UxSm5qZmpLNFdIQTFwS1oxMiIsInN1YiI6Im44RW5mTXZKbGdlMUpuamZqSzRXSEExcEtaMTIiLCJpYXQiOjE3NDE0Nzk4NDEsImV4cCI6MTc0MTQ4MzQ0MSwiZW1haWwiOiJtYW5hZ2VyMUBycmMuY2EiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsibWFuYWdlcjFAcnJjLmNhIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.BSm3slN_0ulyJyIVl3ww82EMCp4SQHQWKxTLBKYRBfOoXk8zl4OhSx_r9nSzAC3rz1J-CCpxDWOOhm10Aa1UIv_rDLmKJCtFPy_AJvmJMpTXhDaQjlrrEgNCr061eo-JM8nzPCiU8LUR3-elcyeWg0dO_5p76xbSC3292918hqB-ANLHGMi4msfWDJ6MJFYiK5ksWAeszuq1lTu9vQv5LCCfu_xoIiDTjVioClRHEQK5_28qmjKmRh5KgKgUCGlKFGr2n1PRkXGrsO8vIhQWZHIGOLPG9y6RC8n5Hibvt-kpn-fB7LJyfLUfqMlZ7GGGYl7SvfcuZgUG7fdSuJVY6g\"\n        },\n        {\n            \"email\": \"officer1@rrc.ca\",\n            \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYmFjay1lbmQtYXNzaWdubWVudDA0IiwiYXVkIjoiYmFjay1lbmQtYXNzaWdubWVudDA0IiwiYXV0aF90aW1lIjoxNzQxNDc5ODQxLCJ1c2VyX2lkIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsInN1YiI6IkxrVDJxeHB2YkhXS2k2M1ltMHVld2I3RmE0TjIiLCJpYXQiOjE3NDE0Nzk4NDEsImV4cCI6MTc0MTQ4MzQ0MSwiZW1haWwiOiJvZmZpY2VyMUBycmMuY2EiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsib2ZmaWNlcjFAcnJjLmNhIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.f0GRNqXc3rOzq5a-lBxW49pvvQXmH1xWc5dYG155EQIh7KYQmaAcfcR5qLghuj8fFfQrAcdhuapXEdFDvMIyviiYM9O5WvQs8BZbFWxvO00QzICEPzmHDzQaUKoUTTYbraWoy1xMhsHGBEFKmNqot6LyB_oFwKeYii7P-SK6aiFi4NZlSPA3M_7dN3AYVafMzUus4rBvBg9oCybNCG57jdeoKdEL87sHV-fhr3gs7CpCmSQoTB-Y547j3gnTfgDVI0FNDmL8zdIDdG4-7ZqZTIzNJps5GDEEifz_zhQaB3wtbNMEmSt8_ve9GCKv0_PLHzSO4OJRBpG-_IqBkZVebw\"\n        },\n        {\n            \"email\": \"user1@rrc.ca\",\n            \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYmFjay1lbmQtYXNzaWdubWVudDA0IiwiYXVkIjoiYmFjay1lbmQtYXNzaWdubWVudDA0IiwiYXV0aF90aW1lIjoxNzQxNDc5ODQxLCJ1c2VyX2lkIjoicTVuT0kyNk9UaWg4R21kcjR0UXZXeEpLQm1uMiIsInN1YiI6InE1bk9JMjZPVGloOEdtZHI0dFF2V3hKS0JtbjIiLCJpYXQiOjE3NDE0Nzk4NDEsImV4cCI6MTc0MTQ4MzQ0MSwiZW1haWwiOiJ1c2VyMUBycmMuY2EiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidXNlcjFAcnJjLmNhIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.ROQWWh5Yo67pSLBkFhFKXsbIoC7HiFf4g2m6irQBRuX0ZNYdgqzJyRHTbftrj35JbU1dZcJz5PUEhJQlTXtjm7yQdX3DXB0-_9tXIFwLY_tFM0sJNo8obT0lAbhN7TbQjGpIoM0Vc-9BiWJDZUhUYQjVsonA2q3FxGSIW5aXChJWGx3zbYoVP2We4nlb41zRlKNcbmGJOHL8qFKlgMuuaz95mDIcZLpxp4g0-wajTzj42_gj3eTTKXOfAuaH4bnqEPbSWRVgxr7KIRLgBLeDc6DeaikYmCGn0m9neeeeQ82ZzKVGhsoS0-2xvXNP4Z4zr6LtCVzZqHGBxyQOCFnNoQ\"\n        }\n    ],\n    \"message\": \"Tokens and Roles for users are fetched successfully.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "setCustomClaim",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoiYWRtaW4iLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYmFjay1lbmQtYXNzaWdubWVudDA0IiwiYXVkIjoiYmFjay1lbmQtYXNzaWdubWVudDA0IiwiYXV0aF90aW1lIjoxNzQxNDgwNDMyLCJ1c2VyX2lkIjoiYlhjaGMwUXdMU2hqWTlmcXQxejg5bU55ckZpMiIsInN1YiI6ImJYY2hjMFF3TFNoalk5ZnF0MXo4OW1OeXJGaTIiLCJpYXQiOjE3NDE0ODA0MzIsImV4cCI6MTc0MTQ4NDAzMiwiZW1haWwiOiJhZG1pbjFAcnJjLmNhIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFkbWluMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.KLY-aqukIX96Pgz5JO4_DF4AJtI9ybI7gkabPYuhFBiiwm7aWfw-9LJsQQqtCwWNuMXjEgz-eEu1MHFAeaVuqOgb8t2uxuNpasticAgFpn_NvBhchlPWMF6pluWr-vh1eIrGTLK_0vsDnkM6_PQ8_TThABiow2jbOyCN-yebqXWiLG5X5s2pOG8w5TWeDGHvHULFvLvOO5GaT6iTaABawia-Y0RlaYm3Lb9VMYcdpnwNSNKSGRRInkrK0yJnKsDklt7eL9dvjNl_o7zlgGpQ6hoFi3vCqcktDAQd9GyXguNnY_x3xwJvXmuuxkjS91pPD90yZJogIfo7TV7uTi3Wbg"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"uid\": \"q5nOI26OTih8Gmdr4tQvWxJKBmn2\", \"claims\":{\"role\": \"user\"}  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/admin/setCustomClaims",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "admin", "setCustomClaims"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "LoanBusiness",
+      "item": [
+        {
+          "name": "getAllLoans-manager-success",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoibWFuYWdlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzgsInVzZXJfaWQiOiJuOEVuZk12SmxnZTFKbmpmaks0V0hBMXBLWjEyIiwic3ViIjoibjhFbmZNdkpsZ2UxSm5qZmpLNFdIQTFwS1oxMiIsImlhdCI6MTc0MTQ4MDUzOCwiZXhwIjoxNzQxNDg0MTM4LCJlbWFpbCI6Im1hbmFnZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtYW5hZ2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.mI_wjEzk3T6v_BPLst4EzK3iH8p0RurlHM3XYgfAS-y87biBaGj4pXfhSs_Efgqjsrq41p0emC3mvRp4B-JHDQP2SmOkJrdQpHm8m2ek8vn1NStTd-O6_n62_1NyR18xNXXX7cc_EI4jJ-cBTuAvCUVFuJdEFz2K5M6CsCcpU31RE8H8Pgf02QZtpX5BFuWn7piaj4D28RjakFCHe6tEI_6lkwwVRGuhNnrZEWSYJc2rldArsReM-ppa_vJrb4Kp_pynZcM7VFIUDCdK57Y39UNH9-d98pQL83KZ_JB-_-9dVgyA45NH0G0-y6jTzUMmRFX6p6HTvX-aScu_p87nlA",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ""]
+            }
+          },
+          "response": [
+            {
+              "name": "getAllLoans-manager",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoibWFuYWdlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzgsInVzZXJfaWQiOiJuOEVuZk12SmxnZTFKbmpmaks0V0hBMXBLWjEyIiwic3ViIjoibjhFbmZNdkpsZ2UxSm5qZmpLNFdIQTFwS1oxMiIsImlhdCI6MTc0MTQ4MDUzOCwiZXhwIjoxNzQxNDg0MTM4LCJlbWFpbCI6Im1hbmFnZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtYW5hZ2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.mI_wjEzk3T6v_BPLst4EzK3iH8p0RurlHM3XYgfAS-y87biBaGj4pXfhSs_Efgqjsrq41p0emC3mvRp4B-JHDQP2SmOkJrdQpHm8m2ek8vn1NStTd-O6_n62_1NyR18xNXXX7cc_EI4jJ-cBTuAvCUVFuJdEFz2K5M6CsCcpU31RE8H8Pgf02QZtpX5BFuWn7piaj4D28RjakFCHe6tEI_6lkwwVRGuhNnrZEWSYJc2rldArsReM-ppa_vJrb4Kp_pynZcM7VFIUDCdK57Y39UNH9-d98pQL83KZ_JB-_-9dVgyA45NH0G0-y6jTzUMmRFX6p6HTvX-aScu_p87nlA",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ""]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "177"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"b1-7fkhNAL6GTrubogg22sqhZrWfL0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 00:42:14 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": \"NnIhIMTjZ8Cbqt9rVanF\",\n            \"amount\": 10000000,\n            \"term\": 10,\n            \"client\": \"Trump\"\n        },\n        {\n            \"id\": \"gWOylfQZV3ZOzMj5yA1I\",\n            \"amount\": 20000000,\n            \"term\": 2,\n            \"client\": \"Elon\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "getAllLoans-officer-success",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoib2ZmaWNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJMa1QycXhwdmJIV0tpNjNZbTB1ZXdiN0ZhNE4yIiwic3ViIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im9mZmljZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJvZmZpY2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.b6a8Yyttz__1YUCRRonPmw_BIH-meN3s38U-dRfRZ7uvEXZOnOHJPIIOczzpW9eiPIShdh5Bym5L2uVOkfSIcABjzSKfZw6RcYOwc4-3bWJc-qDs5PsxvnNIyvtV2zVw_ksbi5kXlRmuNItSJOIcbbokfqsXtkrXdM8tuf4pKMq9nBzFbk3gmuRVnoB4PjoxoVvsm2-37eHid7WRvVMaPLKhgY5Y1n0-H0wP3JOfzL8qt8aDwmwTCl72Ja0gFBc_boQ7HIwadvY2RUmq7OzuX2PHsWSH4QqRNAb0Dxj8rKR5Evx76iQ9vRmtFvDAxiQkEQIFfu6wPfu6IoZobK5P2Q",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ""]
+            }
+          },
+          "response": [
+            {
+              "name": "getAllLoans-officer",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoib2ZmaWNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzgsInVzZXJfaWQiOiJMa1QycXhwdmJIV0tpNjNZbTB1ZXdiN0ZhNE4yIiwic3ViIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsImlhdCI6MTc0MTQ4MDUzOCwiZXhwIjoxNzQxNDg0MTM4LCJlbWFpbCI6Im9mZmljZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJvZmZpY2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.Sfbe_rtV2Gg5xRt8W5820r7_kzMivnmztkTYJKOqPS1pCQsZPecPih3paUygJt21nE2c-1DcrUYmZ9K_5bf_7oF6eqyrBuJXhGiP7SbHWN_7QLZUmH_Y8rXWsmtea3ADg9vgTLMfxhKFMxyxDUNoaDXB4mWbHS7Nw7vuJaIg-QWQQEOJ9Upp14BZU-XPOTHZk3Qw3GOJI2oOleYOf39H-FaxiajWwPvdwpvZxEnxNhZ8nvddU6gNY_85lKdbxGLkJg9SZ87Qq7TL_wdp1gM4bB79Eshpry0968SdP_nP1LPsh6L7yoFhuyFy2yigXAo2HclqpP1-iVVKW9eFc3JJ8w",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ""]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "177"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"b1-7fkhNAL6GTrubogg22sqhZrWfL0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 00:42:35 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": \"NnIhIMTjZ8Cbqt9rVanF\",\n            \"amount\": 10000000,\n            \"term\": 10,\n            \"client\": \"Trump\"\n        },\n        {\n            \"id\": \"gWOylfQZV3ZOzMj5yA1I\",\n            \"amount\": 20000000,\n            \"term\": 2,\n            \"client\": \"Elon\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "getAllLoans-user-fail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoidXNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzksInVzZXJfaWQiOiJxNW5PSTI2T1RpaDhHbWRyNHRRdld4SktCbW4yIiwic3ViIjoicTVuT0kyNk9UaWg4R21kcjR0UXZXeEpLQm1uMiIsImlhdCI6MTc0MTQ4MDUzOSwiZXhwIjoxNzQxNDg0MTM5LCJlbWFpbCI6InVzZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ1c2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.NdPTPP6EdZIHn1dmVHtLLQ1-hzjrS-64TRJcikW2O8zVhLtIMD0iJRWQa_UMYEiOGnkcedOGlgUndvNqW-ds8FrFW3qHlISLFnsW4dmsp3_0V5xefdQPu1b_dewE5QrnzIGGE8iwUwvPJhHCCb_xBReNKqVlA8UM3lOjMU-BRttXA8sRbDQXwtNItepElaCS45Dgsnvn5vENTFRnQEK6Wi7weUT7_H-kBqhcD8lY0NMCXc2tmzg6JzXysfbOOyhFL7eniahVmz7_fWadLIJBss8gPwY5K9F4PdBtTTrLeO5x16GZZ_UMcwIVCjd0ENi_tIXZNO4YEU4dlTobQ3hg3Q",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ""]
+            }
+          },
+          "response": [
+            {
+              "name": "getAllLoans-user",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoidXNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzksInVzZXJfaWQiOiJxNW5PSTI2T1RpaDhHbWRyNHRRdld4SktCbW4yIiwic3ViIjoicTVuT0kyNk9UaWg4R21kcjR0UXZXeEpLQm1uMiIsImlhdCI6MTc0MTQ4MDUzOSwiZXhwIjoxNzQxNDg0MTM5LCJlbWFpbCI6InVzZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ1c2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.NdPTPP6EdZIHn1dmVHtLLQ1-hzjrS-64TRJcikW2O8zVhLtIMD0iJRWQa_UMYEiOGnkcedOGlgUndvNqW-ds8FrFW3qHlISLFnsW4dmsp3_0V5xefdQPu1b_dewE5QrnzIGGE8iwUwvPJhHCCb_xBReNKqVlA8UM3lOjMU-BRttXA8sRbDQXwtNItepElaCS45Dgsnvn5vENTFRnQEK6Wi7weUT7_H-kBqhcD8lY0NMCXc2tmzg6JzXysfbOOyhFL7eniahVmz7_fWadLIJBss8gPwY5K9F4PdBtTTrLeO5x16GZZ_UMcwIVCjd0ENi_tIXZNO4YEU4dlTobQ3hg3Q",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ""]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "86"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"56-stUZHzmsY3bLB75sdqxTZCKMU1o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 00:43:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Forbidden: Insufficient role\",\n    \"code\": \"INSUFFICIENT_ROLE\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "CreateLoan-user-success",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoidXNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzksInVzZXJfaWQiOiJxNW5PSTI2T1RpaDhHbWRyNHRRdld4SktCbW4yIiwic3ViIjoicTVuT0kyNk9UaWg4R21kcjR0UXZXeEpLQm1uMiIsImlhdCI6MTc0MTQ4MDUzOSwiZXhwIjoxNzQxNDg0MTM5LCJlbWFpbCI6InVzZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ1c2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.NdPTPP6EdZIHn1dmVHtLLQ1-hzjrS-64TRJcikW2O8zVhLtIMD0iJRWQa_UMYEiOGnkcedOGlgUndvNqW-ds8FrFW3qHlISLFnsW4dmsp3_0V5xefdQPu1b_dewE5QrnzIGGE8iwUwvPJhHCCb_xBReNKqVlA8UM3lOjMU-BRttXA8sRbDQXwtNItepElaCS45Dgsnvn5vENTFRnQEK6Wi7weUT7_H-kBqhcD8lY0NMCXc2tmzg6JzXysfbOOyhFL7eniahVmz7_fWadLIJBss8gPwY5K9F4PdBtTTrLeO5x16GZZ_UMcwIVCjd0ENi_tIXZNO4YEU4dlTobQ3hg3Q",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 50000000,\r\n  \"term\": 60,\r\n  \"client\": \"the last person in poverty\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ""]
+            }
+          },
+          "response": [
+            {
+              "name": "createLoan",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoidXNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzksInVzZXJfaWQiOiJxNW5PSTI2T1RpaDhHbWRyNHRRdld4SktCbW4yIiwic3ViIjoicTVuT0kyNk9UaWg4R21kcjR0UXZXeEpLQm1uMiIsImlhdCI6MTc0MTQ4MDUzOSwiZXhwIjoxNzQxNDg0MTM5LCJlbWFpbCI6InVzZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ1c2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.NdPTPP6EdZIHn1dmVHtLLQ1-hzjrS-64TRJcikW2O8zVhLtIMD0iJRWQa_UMYEiOGnkcedOGlgUndvNqW-ds8FrFW3qHlISLFnsW4dmsp3_0V5xefdQPu1b_dewE5QrnzIGGE8iwUwvPJhHCCb_xBReNKqVlA8UM3lOjMU-BRttXA8sRbDQXwtNItepElaCS45Dgsnvn5vENTFRnQEK6Wi7weUT7_H-kBqhcD8lY0NMCXc2tmzg6JzXysfbOOyhFL7eniahVmz7_fWadLIJBss8gPwY5K9F4PdBtTTrLeO5x16GZZ_UMcwIVCjd0ENi_tIXZNO4YEU4dlTobQ3hg3Q",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"amount\": 10000000,\r\n  \"term\": 10,\r\n  \"client\": \"Trump\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ""]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "127"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"7f-zRVfDk+kFh+rbNyS0gB+ObOrMPA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 00:42:11 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"id\": \"NnIhIMTjZ8Cbqt9rVanF\",\n        \"amount\": 10000000,\n        \"term\": 10,\n        \"client\": \"Trump\"\n    },\n    \"message\": \"Loan Created\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "CreateLoan-manager-fail",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoibWFuYWdlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzgsInVzZXJfaWQiOiJuOEVuZk12SmxnZTFKbmpmaks0V0hBMXBLWjEyIiwic3ViIjoibjhFbmZNdkpsZ2UxSm5qZmpLNFdIQTFwS1oxMiIsImlhdCI6MTc0MTQ4MDUzOCwiZXhwIjoxNzQxNDg0MTM4LCJlbWFpbCI6Im1hbmFnZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtYW5hZ2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.mI_wjEzk3T6v_BPLst4EzK3iH8p0RurlHM3XYgfAS-y87biBaGj4pXfhSs_Efgqjsrq41p0emC3mvRp4B-JHDQP2SmOkJrdQpHm8m2ek8vn1NStTd-O6_n62_1NyR18xNXXX7cc_EI4jJ-cBTuAvCUVFuJdEFz2K5M6CsCcpU31RE8H8Pgf02QZtpX5BFuWn7piaj4D28RjakFCHe6tEI_6lkwwVRGuhNnrZEWSYJc2rldArsReM-ppa_vJrb4Kp_pynZcM7VFIUDCdK57Y39UNH9-d98pQL83KZ_JB-_-9dVgyA45NH0G0-y6jTzUMmRFX6p6HTvX-aScu_p87nlA",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 10000000,\r\n  \"term\": 10,\r\n  \"client\": \"Trump\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ""]
+            }
+          },
+          "response": [
+            {
+              "name": "CreateLoan",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoibWFuYWdlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzgsInVzZXJfaWQiOiJuOEVuZk12SmxnZTFKbmpmaks0V0hBMXBLWjEyIiwic3ViIjoibjhFbmZNdkpsZ2UxSm5qZmpLNFdIQTFwS1oxMiIsImlhdCI6MTc0MTQ4MDUzOCwiZXhwIjoxNzQxNDg0MTM4LCJlbWFpbCI6Im1hbmFnZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtYW5hZ2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.mI_wjEzk3T6v_BPLst4EzK3iH8p0RurlHM3XYgfAS-y87biBaGj4pXfhSs_Efgqjsrq41p0emC3mvRp4B-JHDQP2SmOkJrdQpHm8m2ek8vn1NStTd-O6_n62_1NyR18xNXXX7cc_EI4jJ-cBTuAvCUVFuJdEFz2K5M6CsCcpU31RE8H8Pgf02QZtpX5BFuWn7piaj4D28RjakFCHe6tEI_6lkwwVRGuhNnrZEWSYJc2rldArsReM-ppa_vJrb4Kp_pynZcM7VFIUDCdK57Y39UNH9-d98pQL83KZ_JB-_-9dVgyA45NH0G0-y6jTzUMmRFX6p6HTvX-aScu_p87nlA",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"amount\": 10000000,\r\n  \"term\": 10,\r\n  \"client\": \"Trump\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ""]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "86"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"56-stUZHzmsY3bLB75sdqxTZCKMU1o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 00:52:03 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Forbidden: Insufficient role\",\n    \"code\": \"INSUFFICIENT_ROLE\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "CreateLoan-officer-fail",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoib2ZmaWNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzgsInVzZXJfaWQiOiJMa1QycXhwdmJIV0tpNjNZbTB1ZXdiN0ZhNE4yIiwic3ViIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsImlhdCI6MTc0MTQ4MDUzOCwiZXhwIjoxNzQxNDg0MTM4LCJlbWFpbCI6Im9mZmljZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJvZmZpY2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.Sfbe_rtV2Gg5xRt8W5820r7_kzMivnmztkTYJKOqPS1pCQsZPecPih3paUygJt21nE2c-1DcrUYmZ9K_5bf_7oF6eqyrBuJXhGiP7SbHWN_7QLZUmH_Y8rXWsmtea3ADg9vgTLMfxhKFMxyxDUNoaDXB4mWbHS7Nw7vuJaIg-QWQQEOJ9Upp14BZU-XPOTHZk3Qw3GOJI2oOleYOf39H-FaxiajWwPvdwpvZxEnxNhZ8nvddU6gNY_85lKdbxGLkJg9SZ87Qq7TL_wdp1gM4bB79Eshpry0968SdP_nP1LPsh6L7yoFhuyFy2yigXAo2HclqpP1-iVVKW9eFc3JJ8w",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"amount\": 10000000,\r\n  \"term\": 10,\r\n  \"client\": \"Trump\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ""]
+            }
+          },
+          "response": [
+            {
+              "name": "CreateLoan-officer-fail",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoib2ZmaWNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE0ODA1MzgsInVzZXJfaWQiOiJMa1QycXhwdmJIV0tpNjNZbTB1ZXdiN0ZhNE4yIiwic3ViIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsImlhdCI6MTc0MTQ4MDUzOCwiZXhwIjoxNzQxNDg0MTM4LCJlbWFpbCI6Im9mZmljZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJvZmZpY2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.Sfbe_rtV2Gg5xRt8W5820r7_kzMivnmztkTYJKOqPS1pCQsZPecPih3paUygJt21nE2c-1DcrUYmZ9K_5bf_7oF6eqyrBuJXhGiP7SbHWN_7QLZUmH_Y8rXWsmtea3ADg9vgTLMfxhKFMxyxDUNoaDXB4mWbHS7Nw7vuJaIg-QWQQEOJ9Upp14BZU-XPOTHZk3Qw3GOJI2oOleYOf39H-FaxiajWwPvdwpvZxEnxNhZ8nvddU6gNY_85lKdbxGLkJg9SZ87Qq7TL_wdp1gM4bB79Eshpry0968SdP_nP1LPsh6L7yoFhuyFy2yigXAo2HclqpP1-iVVKW9eFc3JJ8w",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"amount\": 10000000,\r\n  \"term\": 10,\r\n  \"client\": \"Trump\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ""]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "86"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"56-stUZHzmsY3bLB75sdqxTZCKMU1o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 00:51:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Forbidden: Insufficient role\",\n    \"code\": \"INSUFFICIENT_ROLE\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "review-officer-success",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoib2ZmaWNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJMa1QycXhwdmJIV0tpNjNZbTB1ZXdiN0ZhNE4yIiwic3ViIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im9mZmljZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJvZmZpY2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.b6a8Yyttz__1YUCRRonPmw_BIH-meN3s38U-dRfRZ7uvEXZOnOHJPIIOczzpW9eiPIShdh5Bym5L2uVOkfSIcABjzSKfZw6RcYOwc4-3bWJc-qDs5PsxvnNIyvtV2zVw_ksbi5kXlRmuNItSJOIcbbokfqsXtkrXdM8tuf4pKMq9nBzFbk3gmuRVnoB4PjoxoVvsm2-37eHid7WRvVMaPLKhgY5Y1n0-H0wP3JOfzL8qt8aDwmwTCl72Ja0gFBc_boQ7HIwadvY2RUmq7OzuX2PHsWSH4QqRNAb0Dxj8rKR5Evx76iQ9vRmtFvDAxiQkEQIFfu6wPfu6IoZobK5P2Q",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/:id/review",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ":id", "review"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "PKk6d1CZy7mzEUuka2ce"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "review-officer-success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoib2ZmaWNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJMa1QycXhwdmJIV0tpNjNZbTB1ZXdiN0ZhNE4yIiwic3ViIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im9mZmljZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJvZmZpY2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.b6a8Yyttz__1YUCRRonPmw_BIH-meN3s38U-dRfRZ7uvEXZOnOHJPIIOczzpW9eiPIShdh5Bym5L2uVOkfSIcABjzSKfZw6RcYOwc4-3bWJc-qDs5PsxvnNIyvtV2zVw_ksbi5kXlRmuNItSJOIcbbokfqsXtkrXdM8tuf4pKMq9nBzFbk3gmuRVnoB4PjoxoVvsm2-37eHid7WRvVMaPLKhgY5Y1n0-H0wP3JOfzL8qt8aDwmwTCl72Ja0gFBc_boQ7HIwadvY2RUmq7OzuX2PHsWSH4QqRNAb0Dxj8rKR5Evx76iQ9vRmtFvDAxiQkEQIFfu6wPfu6IoZobK5P2Q",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/:id/review",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ":id", "review"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "PKk6d1CZy7mzEUuka2ce"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "150"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"96-Xs1yxp3cKi2b5O6UJqtovnOXUno\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 22:00:37 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"id\": \"PKk6d1CZy7mzEUuka2ce\",\n        \"amount\": 11100000,\n        \"term\": 100,\n        \"status\": \"In Review Process\"\n    },\n    \"message\": \"Loan has been reviewed\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "review-manager-fail",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoibWFuYWdlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJuOEVuZk12SmxnZTFKbmpmaks0V0hBMXBLWjEyIiwic3ViIjoibjhFbmZNdkpsZ2UxSm5qZmpLNFdIQTFwS1oxMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im1hbmFnZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtYW5hZ2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.qUw5SX6GfYfyE9hj9WOqxCgA5MCwk3MtWWin9ky7Ou3e0y23kkL-LnOcIH_eQz6_i5GRYI70HG4MzuVPLVrZJA7cZa633Aj1HDv1eitbZDbmupbv_JoVboH99AxcJ7xFxS5zqXlz3lEqHBo0rY-pMCUrA0_dR3uQ-DaYGna0dq2Wdb4_6T7HUo6FIUrrslTq34WkSgIH9SGX5yOcO4EgiCfJTsVNm00hQ_kkS5XARk_uxkanBJDvzh5Sj-2fRxc-jBUgsKzRXobbAvKsCQWMTcDbheE6HQEMb6UvV-AEXa2EbdelruLFNi3BZlOzUoXPXBg1HvlBmp6pRUu05Aza5A",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/:id/review",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ":id", "review"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "PKk6d1CZy7mzEUuka2ce"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "review-manager-fail",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoibWFuYWdlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJuOEVuZk12SmxnZTFKbmpmaks0V0hBMXBLWjEyIiwic3ViIjoibjhFbmZNdkpsZ2UxSm5qZmpLNFdIQTFwS1oxMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im1hbmFnZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtYW5hZ2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.qUw5SX6GfYfyE9hj9WOqxCgA5MCwk3MtWWin9ky7Ou3e0y23kkL-LnOcIH_eQz6_i5GRYI70HG4MzuVPLVrZJA7cZa633Aj1HDv1eitbZDbmupbv_JoVboH99AxcJ7xFxS5zqXlz3lEqHBo0rY-pMCUrA0_dR3uQ-DaYGna0dq2Wdb4_6T7HUo6FIUrrslTq34WkSgIH9SGX5yOcO4EgiCfJTsVNm00hQ_kkS5XARk_uxkanBJDvzh5Sj-2fRxc-jBUgsKzRXobbAvKsCQWMTcDbheE6HQEMb6UvV-AEXa2EbdelruLFNi3BZlOzUoXPXBg1HvlBmp6pRUu05Aza5A",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/:id/review",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ":id", "review"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "PKk6d1CZy7mzEUuka2ce"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "86"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"56-stUZHzmsY3bLB75sdqxTZCKMU1o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 22:02:12 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Forbidden: Insufficient role\",\n    \"code\": \"INSUFFICIENT_ROLE\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "review-user-fail",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoidXNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTYsInVzZXJfaWQiOiJxNW5PSTI2T1RpaDhHbWRyNHRRdld4SktCbW4yIiwic3ViIjoicTVuT0kyNk9UaWg4R21kcjR0UXZXeEpLQm1uMiIsImlhdCI6MTc0MTU1NzI5NiwiZXhwIjoxNzQxNTYwODk2LCJlbWFpbCI6InVzZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ1c2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.Yy6umDbzhFUZ0UqMDMHU9sfBUjUUz0rQpzW7ao0uaiIPSuS7fv_eCk6M8bz36AKCJ5zeKNK7UYHv4smTqxNMBLlq23R_xMRKqvCxRO6OryqKP4R1OM4d686eOcYGdhCeNXlkGMN6495mmJhbMXaUm5nb6X-dR6SyVXNUmE6UMVjjOTQdFyGW3fCReVNpsw8sMAM65ag--NddOK4aneO8mUXlvCGRidSgawGDMBO7n8atOo9FCDZht1kPYajgI2Jwka3Jir5Pk8Ba8XH2RlwSf__lzpRQBmP9yNU5uBLW-TkrryUaL0XlV-J21FFt68lZxs4A6WREw_bWIJkn7lcLnQ",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/:id/review",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ":id", "review"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "PKk6d1CZy7mzEUuka2ce"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "review-user-fail",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoidXNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTYsInVzZXJfaWQiOiJxNW5PSTI2T1RpaDhHbWRyNHRRdld4SktCbW4yIiwic3ViIjoicTVuT0kyNk9UaWg4R21kcjR0UXZXeEpLQm1uMiIsImlhdCI6MTc0MTU1NzI5NiwiZXhwIjoxNzQxNTYwODk2LCJlbWFpbCI6InVzZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ1c2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.Yy6umDbzhFUZ0UqMDMHU9sfBUjUUz0rQpzW7ao0uaiIPSuS7fv_eCk6M8bz36AKCJ5zeKNK7UYHv4smTqxNMBLlq23R_xMRKqvCxRO6OryqKP4R1OM4d686eOcYGdhCeNXlkGMN6495mmJhbMXaUm5nb6X-dR6SyVXNUmE6UMVjjOTQdFyGW3fCReVNpsw8sMAM65ag--NddOK4aneO8mUXlvCGRidSgawGDMBO7n8atOo9FCDZht1kPYajgI2Jwka3Jir5Pk8Ba8XH2RlwSf__lzpRQBmP9yNU5uBLW-TkrryUaL0XlV-J21FFt68lZxs4A6WREw_bWIJkn7lcLnQ",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/:id/review",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ":id", "review"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "PKk6d1CZy7mzEUuka2ce"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "86"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"56-stUZHzmsY3bLB75sdqxTZCKMU1o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 22:03:15 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Forbidden: Insufficient role\",\n    \"code\": \"INSUFFICIENT_ROLE\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "approve-manager-success",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoibWFuYWdlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJuOEVuZk12SmxnZTFKbmpmaks0V0hBMXBLWjEyIiwic3ViIjoibjhFbmZNdkpsZ2UxSm5qZmpLNFdIQTFwS1oxMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im1hbmFnZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtYW5hZ2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.qUw5SX6GfYfyE9hj9WOqxCgA5MCwk3MtWWin9ky7Ou3e0y23kkL-LnOcIH_eQz6_i5GRYI70HG4MzuVPLVrZJA7cZa633Aj1HDv1eitbZDbmupbv_JoVboH99AxcJ7xFxS5zqXlz3lEqHBo0rY-pMCUrA0_dR3uQ-DaYGna0dq2Wdb4_6T7HUo6FIUrrslTq34WkSgIH9SGX5yOcO4EgiCfJTsVNm00hQ_kkS5XARk_uxkanBJDvzh5Sj-2fRxc-jBUgsKzRXobbAvKsCQWMTcDbheE6HQEMb6UvV-AEXa2EbdelruLFNi3BZlOzUoXPXBg1HvlBmp6pRUu05Aza5A",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/:id/approve",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ":id", "approve"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "PKk6d1CZy7mzEUuka2ce"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "review-officer-success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoibWFuYWdlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJuOEVuZk12SmxnZTFKbmpmaks0V0hBMXBLWjEyIiwic3ViIjoibjhFbmZNdkpsZ2UxSm5qZmpLNFdIQTFwS1oxMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im1hbmFnZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJtYW5hZ2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.qUw5SX6GfYfyE9hj9WOqxCgA5MCwk3MtWWin9ky7Ou3e0y23kkL-LnOcIH_eQz6_i5GRYI70HG4MzuVPLVrZJA7cZa633Aj1HDv1eitbZDbmupbv_JoVboH99AxcJ7xFxS5zqXlz3lEqHBo0rY-pMCUrA0_dR3uQ-DaYGna0dq2Wdb4_6T7HUo6FIUrrslTq34WkSgIH9SGX5yOcO4EgiCfJTsVNm00hQ_kkS5XARk_uxkanBJDvzh5Sj-2fRxc-jBUgsKzRXobbAvKsCQWMTcDbheE6HQEMb6UvV-AEXa2EbdelruLFNi3BZlOzUoXPXBg1HvlBmp6pRUu05Aza5A",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/:id/approve",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ":id", "approve"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "PKk6d1CZy7mzEUuka2ce"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "128"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"80-ay79/qCd8wx4qljFd2uQzQBHOmQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 22:06:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"id\": \"PKk6d1CZy7mzEUuka2ce\",\n        \"status\": \"Approved\"\n    },\n    \"message\": \"The decision on the loan has been made\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "approve-officer-fail",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoib2ZmaWNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJMa1QycXhwdmJIV0tpNjNZbTB1ZXdiN0ZhNE4yIiwic3ViIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im9mZmljZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJvZmZpY2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.b6a8Yyttz__1YUCRRonPmw_BIH-meN3s38U-dRfRZ7uvEXZOnOHJPIIOczzpW9eiPIShdh5Bym5L2uVOkfSIcABjzSKfZw6RcYOwc4-3bWJc-qDs5PsxvnNIyvtV2zVw_ksbi5kXlRmuNItSJOIcbbokfqsXtkrXdM8tuf4pKMq9nBzFbk3gmuRVnoB4PjoxoVvsm2-37eHid7WRvVMaPLKhgY5Y1n0-H0wP3JOfzL8qt8aDwmwTCl72Ja0gFBc_boQ7HIwadvY2RUmq7OzuX2PHsWSH4QqRNAb0Dxj8rKR5Evx76iQ9vRmtFvDAxiQkEQIFfu6wPfu6IoZobK5P2Q",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/:id/approve",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ":id", "approve"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "PKk6d1CZy7mzEUuka2ce"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "approve-officer-fail",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoib2ZmaWNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJMa1QycXhwdmJIV0tpNjNZbTB1ZXdiN0ZhNE4yIiwic3ViIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im9mZmljZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJvZmZpY2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.b6a8Yyttz__1YUCRRonPmw_BIH-meN3s38U-dRfRZ7uvEXZOnOHJPIIOczzpW9eiPIShdh5Bym5L2uVOkfSIcABjzSKfZw6RcYOwc4-3bWJc-qDs5PsxvnNIyvtV2zVw_ksbi5kXlRmuNItSJOIcbbokfqsXtkrXdM8tuf4pKMq9nBzFbk3gmuRVnoB4PjoxoVvsm2-37eHid7WRvVMaPLKhgY5Y1n0-H0wP3JOfzL8qt8aDwmwTCl72Ja0gFBc_boQ7HIwadvY2RUmq7OzuX2PHsWSH4QqRNAb0Dxj8rKR5Evx76iQ9vRmtFvDAxiQkEQIFfu6wPfu6IoZobK5P2Q",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/:id/approve",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ":id", "approve"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "PKk6d1CZy7mzEUuka2ce"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "86"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"56-stUZHzmsY3bLB75sdqxTZCKMU1o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 22:08:26 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Forbidden: Insufficient role\",\n    \"code\": \"INSUFFICIENT_ROLE\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "approve-user-fail",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoidXNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTYsInVzZXJfaWQiOiJxNW5PSTI2T1RpaDhHbWRyNHRRdld4SktCbW4yIiwic3ViIjoicTVuT0kyNk9UaWg4R21kcjR0UXZXeEpLQm1uMiIsImlhdCI6MTc0MTU1NzI5NiwiZXhwIjoxNzQxNTYwODk2LCJlbWFpbCI6InVzZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ1c2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.Yy6umDbzhFUZ0UqMDMHU9sfBUjUUz0rQpzW7ao0uaiIPSuS7fv_eCk6M8bz36AKCJ5zeKNK7UYHv4smTqxNMBLlq23R_xMRKqvCxRO6OryqKP4R1OM4d686eOcYGdhCeNXlkGMN6495mmJhbMXaUm5nb6X-dR6SyVXNUmE6UMVjjOTQdFyGW3fCReVNpsw8sMAM65ag--NddOK4aneO8mUXlvCGRidSgawGDMBO7n8atOo9FCDZht1kPYajgI2Jwka3Jir5Pk8Ba8XH2RlwSf__lzpRQBmP9yNU5uBLW-TkrryUaL0XlV-J21FFt68lZxs4A6WREw_bWIJkn7lcLnQ",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/loans/:id/approve",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "loans", ":id", "approve"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "PKk6d1CZy7mzEUuka2ce"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "approve-officer-fail Copy",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bear eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoidXNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTYsInVzZXJfaWQiOiJxNW5PSTI2T1RpaDhHbWRyNHRRdld4SktCbW4yIiwic3ViIjoicTVuT0kyNk9UaWg4R21kcjR0UXZXeEpLQm1uMiIsImlhdCI6MTc0MTU1NzI5NiwiZXhwIjoxNzQxNTYwODk2LCJlbWFpbCI6InVzZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ1c2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.Yy6umDbzhFUZ0UqMDMHU9sfBUjUUz0rQpzW7ao0uaiIPSuS7fv_eCk6M8bz36AKCJ5zeKNK7UYHv4smTqxNMBLlq23R_xMRKqvCxRO6OryqKP4R1OM4d686eOcYGdhCeNXlkGMN6495mmJhbMXaUm5nb6X-dR6SyVXNUmE6UMVjjOTQdFyGW3fCReVNpsw8sMAM65ag--NddOK4aneO8mUXlvCGRidSgawGDMBO7n8atOo9FCDZht1kPYajgI2Jwka3Jir5Pk8Ba8XH2RlwSf__lzpRQBmP9yNU5uBLW-TkrryUaL0XlV-J21FFt68lZxs4A6WREw_bWIJkn7lcLnQ",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n            \"amount\": 11100000,\r\n            \"term\": 100\r\n            \r\n        }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/loans/:id/approve",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "loans", ":id", "approve"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "PKk6d1CZy7mzEUuka2ce"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "86"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"56-stUZHzmsY3bLB75sdqxTZCKMU1o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 22:09:11 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Forbidden: Insufficient role\",\n    \"code\": \"INSUFFICIENT_ROLE\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "UserInformation",
+      "item": [
+        {
+          "name": "getUserInfo",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "bearer: eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoib2ZmaWNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJMa1QycXhwdmJIV0tpNjNZbTB1ZXdiN0ZhNE4yIiwic3ViIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im9mZmljZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJvZmZpY2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.b6a8Yyttz__1YUCRRonPmw_BIH-meN3s38U-dRfRZ7uvEXZOnOHJPIIOczzpW9eiPIShdh5Bym5L2uVOkfSIcABjzSKfZw6RcYOwc4-3bWJc-qDs5PsxvnNIyvtV2zVw_ksbi5kXlRmuNItSJOIcbbokfqsXtkrXdM8tuf4pKMq9nBzFbk3gmuRVnoB4PjoxoVvsm2-37eHid7WRvVMaPLKhgY5Y1n0-H0wP3JOfzL8qt8aDwmwTCl72Ja0gFBc_boQ7HIwadvY2RUmq7OzuX2PHsWSH4QqRNAb0Dxj8rKR5Evx76iQ9vRmtFvDAxiQkEQIFfu6wPfu6IoZobK5P2Q",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/users/:uid",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "users", ":uid"],
+              "variable": [
+                {
+                  "key": "uid",
+                  "value": "LkT2qxpvbHWKi63Ym0uewb7Fa4N2"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getUserInfo",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "bearer: eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDAxN2U3MGE4MWM5NTMxY2YxYjY4MjY4M2Q5OThlNGY1NTg5MTkiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoib2ZmaWNlciIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9iYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdWQiOiJiYWNrLWVuZC1hc3NpZ25tZW50MDQiLCJhdXRoX3RpbWUiOjE3NDE1NTcyOTUsInVzZXJfaWQiOiJMa1QycXhwdmJIV0tpNjNZbTB1ZXdiN0ZhNE4yIiwic3ViIjoiTGtUMnF4cHZiSFdLaTYzWW0wdWV3YjdGYTROMiIsImlhdCI6MTc0MTU1NzI5NSwiZXhwIjoxNzQxNTYwODk1LCJlbWFpbCI6Im9mZmljZXIxQHJyYy5jYSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJvZmZpY2VyMUBycmMuY2EiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.b6a8Yyttz__1YUCRRonPmw_BIH-meN3s38U-dRfRZ7uvEXZOnOHJPIIOczzpW9eiPIShdh5Bym5L2uVOkfSIcABjzSKfZw6RcYOwc4-3bWJc-qDs5PsxvnNIyvtV2zVw_ksbi5kXlRmuNItSJOIcbbokfqsXtkrXdM8tuf4pKMq9nBzFbk3gmuRVnoB4PjoxoVvsm2-37eHid7WRvVMaPLKhgY5Y1n0-H0wP3JOfzL8qt8aDwmwTCl72Ja0gFBc_boQ7HIwadvY2RUmq7OzuX2PHsWSH4QqRNAb0Dxj8rKR5Evx76iQ9vRmtFvDAxiQkEQIFfu6wPfu6IoZobK5P2Q",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:3000/api/v1/users/:uid",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "3000",
+                  "path": ["api", "v1", "users", ":uid"],
+                  "variable": [
+                    {
+                      "key": "uid",
+                      "value": "LkT2qxpvbHWKi63Ym0uewb7Fa4N2"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "472"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1d8-cHUuoiHuZL2nCfX5VUr1p3HdrB4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Mar 2025 22:12:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"uid\": \"LkT2qxpvbHWKi63Ym0uewb7Fa4N2\",\n        \"email\": \"officer1@rrc.ca\",\n        \"emailVerified\": false,\n        \"disabled\": false,\n        \"metadata\": {\n            \"lastSignInTime\": \"Sun, 09 Mar 2025 21:54:52 GMT\",\n            \"creationTime\": \"Wed, 05 Mar 2025 17:41:06 GMT\",\n            \"lastRefreshTime\": \"Sun, 09 Mar 2025 21:54:52 GMT\"\n        },\n        \"customClaims\": {\n            \"role\": \"officer\"\n        },\n        \"tokensValidAfterTime\": \"Wed, 05 Mar 2025 17:41:06 GMT\",\n        \"providerData\": [\n            {\n                \"uid\": \"officer1@rrc.ca\",\n                \"email\": \"officer1@rrc.ca\",\n                \"providerId\": \"password\"\n            }\n        ]\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "health check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
