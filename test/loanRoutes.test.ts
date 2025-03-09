@@ -5,6 +5,7 @@ import { Loan } from "../src/api/v1/models/loanModel";
 import { MiddlewareFunction } from "src/api/v1/types/expressTypes";
 import {
   getAllLoans,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   getLoanById,
   createLoan,
   reviewLoan,
@@ -25,6 +26,7 @@ jest.mock("../src/api/v1/middleware/authenticate", () => {
 
 jest.mock("../src/api/v1/middleware/authorize", (): MiddlewareFunction => {
   return jest.fn(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (options) => (req: Request, res: Response, next: NextFunction) => next()
   );
 });
